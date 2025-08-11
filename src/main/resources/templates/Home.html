@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta charset="UTF-8">
+    <title>Bem-vindo ao Gerenciador de Clientes</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🚀 Bem-vindo ao Gerenciador de Clientes!</h1>
+        <p>Olá! Esta aplicação é um sistema para gerenciar clientes, utilizando Spring Boot. Aqui você pode testar todas as operações básicas de um sistema real: criar, ler, atualizar e deletar dados.</p>
+
+        <h2>Como Testar a API</h2>
+        <p>Para interagir com os endpoints, você pode usar ferramentas como <strong>Postman</strong>, <strong>Insomnia</strong> ou qualquer cliente HTTP de sua preferência.</p>
+        <p>Para uma experiência mais interativa, acesse nossa documentação gerada automaticamente:</p>
+        <p><a href="/swagger-ui.html" target="_blank"><strong>Acessar Documentação Interativa (Swagger UI)</strong></a></p>
+
+        <hr>
+
+        <h2>Endpoints Disponíveis (Recurso: <code>/clientes</code>)</h2>
+
+        <div class="endpoint">
+            <span>GET /clientes</span>
+            <p>Retorna uma lista com todos os clientes cadastrados.</p>
+        </div>
+
+        <div class="endpoint">
+            <span>GET /clientes/{id}</span>
+            <p>Busca um cliente específico pelo seu ID. Ex: <code>/clientes/1</code>.</p>
+        </div>
+
+        <div class="endpoint">
+            <span>POST /clientes</span>
+            <p>Cria um novo cliente. Você precisa enviar os dados do cliente no corpo da requisição em formato JSON.</p>
+        </div>
+
+        <div class="endpoint">
+            <span>PUT /clientes/{id}</span>
+            <p>Atualiza os dados de um cliente existente. Envie os novos dados no corpo da requisição.</p>
+        </div>
+
+        <div class="endpoint">
+            <span>DELETE /clientes/{id}</span>
+            <p>Remove um cliente do sistema pelo seu ID.</p>
+        </div>
+
+        <hr>
+
+        <div class="highlight">
+            <h2>✨ Funcionalidade Especial: Preenchimento Automático por CEP!</h2>
+            <p>Esta é a parte mais legal! Ao <strong>criar (POST)</strong> ou <strong>atualizar (PUT)</strong> um cliente, você não precisa preencher o endereço completo.</p>
+            <p>Basta apagar os outros campos do endereço e enviar <strong>apenas o CEP</strong> no corpo da requisição. O sistema irá automaticamente buscar os dados do endereço correspondente e preencher para você!</p>
+            <p><strong>Exemplo de JSON para criar um cliente (só com o CEP):</strong></p>
+            <pre><code>{
+    "nome": "Wallace Candido",
+    "email": "wallace.candido@example.com",
+    "idade": 30,
+    "endereco": {
+        "cep": "01001000"
+    }
+}</code></pre>
+            <p>O sistema vai consultar o ViaCEP, preencher o logradouro, bairro, cidade, etc., e salvar o cliente com o endereço completo!</p>
+        </div>
+    </div>
+
+</body>
+</html>
