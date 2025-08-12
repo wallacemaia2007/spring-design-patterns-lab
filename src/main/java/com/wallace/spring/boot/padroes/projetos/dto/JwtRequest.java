@@ -3,7 +3,6 @@ package com.wallace.spring.boot.padroes.projetos.dto;
 import java.io.Serial;
 import java.io.Serializable;
 
-// Esta classe é um DTO (Data Transfer Object) para a requisição de autenticação
 public class JwtRequest implements Serializable {
 
     @Serial
@@ -12,7 +11,6 @@ public class JwtRequest implements Serializable {
     private String username;
     private String password;
 
-    // Construtor padrão necessário para deserialização JSON
     public JwtRequest() {
     }
 

@@ -3,7 +3,6 @@ package com.wallace.spring.boot.padroes.projetos.dto;
 import java.io.Serial;
 import java.io.Serializable;
 
-// Esta classe é um DTO para a resposta de autenticação, contendo o token JWT
 public class JwtResponse implements Serializable {
 
     @Serial
