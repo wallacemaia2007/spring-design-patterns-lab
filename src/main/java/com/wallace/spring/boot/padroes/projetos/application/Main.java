@@ -21,15 +21,20 @@ public class Main implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        if (userRepository.count() == 0) {
+    	if (userRepository.count() == 0) {
             User managerUser = new User();
-            
-            managerUser.setUserName("Wallace");
+            managerUser.setUserName("fulano");
             managerUser.setPassword(passwordEncoder.encode("1234"));
             managerUser.setRoles(Arrays.asList("MANAGER"));
             userRepository.save(managerUser);
 
-            System.out.println("Usuário 'admin' criado com sucesso!");
+            User commonUser = new User();
+            commonUser.setUserName("ciclano");
+            commonUser.setPassword(passwordEncoder.encode("1234"));
+            commonUser.setRoles(Arrays.asList("USER"));
+            userRepository.save(commonUser);
+
+            System.out.println("Usuários 'fulano' (MANAGER) e 'ciclano' (USER) criados com sucesso!");
         }
     }
 

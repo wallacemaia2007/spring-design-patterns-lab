@@ -12,25 +12,27 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
-	@Bean
-	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests(auth -> auth
-				.requestMatchers("/publico").permitAll()
-				.requestMatchers("/manager").hasRole("MANAGER")
-				.requestMatchers("/user").hasAnyRole("USER","MANAGER")
-				.anyRequest().authenticated())
-				.formLogin(form -> form
-					    .defaultSuccessUrl("/", true)
-					    .permitAll()
-				)
-				.logout(logout -> logout.permitAll())
-				.csrf(csrf -> csrf.disable());
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/css/**").permitAll()
+                
+                .requestMatchers("/swagger-ui.html", "/v3/api-docs/**", "/swagger-ui/**").hasRole("MANAGER")
+                .requestMatchers("/clientes/**").hasRole("MANAGER")
+                
+                .anyRequest().authenticated())
+                .formLogin(form -> form
+                        .defaultSuccessUrl("/", true)
+                        .permitAll()
+                )
+                .logout(logout -> logout.permitAll())
+                .csrf(csrf -> csrf.disable());
 
-		return http.build();
-	}
+        return http.build();
+    }
 
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }

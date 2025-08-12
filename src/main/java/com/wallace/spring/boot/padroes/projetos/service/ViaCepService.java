@@ -10,5 +10,5 @@ import com.wallace.spring.boot.padroes.projetos.entities.Endereco;
 public interface ViaCepService {
 
 	@GetMapping("/{cep}/json/")
-	Endereco consultarCep(@PathVariable("cep") String cep);
+	Endereco consultarCep(@PathVariable String cep);
 }
